@@ -1,4 +1,4 @@
-package HIbernate;
+package Hibernate;
 
 /**
  * Hello world!

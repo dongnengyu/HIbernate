@@ -1,6 +1,5 @@
 package Hibernate.service;
 
-
 import Hibernate.entity.User;
 import Hibernate.util.MySessionFactory;
 import org.hibernate.Session;
@@ -18,8 +17,9 @@ public class UserService {
     public static void main(String[] args) {
 
         //addUser();
-        updateUser();
+        //updateUser();
 
+        deleteUser();
 
     }
 
@@ -53,7 +53,7 @@ public class UserService {
 
     }
 
-    public static void deleteUser(){
+    public static void deleteUser() {
 
 //        //1.创建Configuration，该对象用于读取HIbernate.cfg.xml，并完成初始化
 //        Configuration configuration = new Configuration().configure();
@@ -72,7 +72,13 @@ public class UserService {
         //4.对HIbernate而言，要求进行增加、修改、删除的时候要用事务，查询就不需要
         Transaction transaction = session.beginTransaction();
 
-        
+        User user = (User) session.load(User.class, 7);
+
+        session.delete(user);
+
+        transaction.commit();
+
+        session.close();
     }
 
 
