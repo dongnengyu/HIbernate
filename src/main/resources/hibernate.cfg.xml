@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- 数据库连接属性 -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/mydb?useUnicode=true&amp;characterEncoding=utf8
+        </property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">123456</property>
+
+        <!-- Mysql数据库底层有多种存储引擎 -->
+        <!-- InnoDB（使用事务必须用这个，写数据的时候）/MyISAM/Memory -->
+
+        <!-- SQL方言  -->
+        <!-- 如果使用Mysql5.7及以上版本配置MySQL57Dialect -->
+        <!-- 如果使用Mysql5.7以下版本配置MySQL5InnoDBDialect -->
+        <!-- 如果使用Hibernate5.2.9以前版本配置MySQLDialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
+
+        <!-- 设置回话和thread（当前线程）进行绑定 -->
+        <!-- 每个线程都持有自己的资源，不影响并发，不会因为竞争资源影响并发 -->
+        <!-- 不会重复创建Session造成资源的浪费以及无法开启事务环境（相当于TreadLocal的作用，线程工具类） -->
+
+        <property name="current_session_context_class">thread</property>
+
+        <!-- 显示并格式化sql语句（在上线版本中要去掉两个配置） -->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!-- 自动生成表结构（hibernate对应的数据库变更策略） -->
+        <!--  <property name="hbm2ddl.auto">update</property> -->
+
+        <!-- 使用了注解的类,全限定名 -->
+        <mapping class="Hibernate.entity.User"/>
+
+    </session-factory>
+
+</hibernate-configuration>
