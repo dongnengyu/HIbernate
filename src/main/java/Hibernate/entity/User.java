@@ -1,5 +1,7 @@
 package Hibernate.entity;
 
+import java.io.Serializable;
+
 /**
  * @param
  * @Author: 董能宇
@@ -7,8 +9,9 @@ package Hibernate.entity;
  * @Description:
  * @Date: 2018/5/12
  */
-public class User {
+public class User implements Serializable {
 
+    private static final long serialVersionUID = 1l;
     private int id;
     private String name;
     private int age;

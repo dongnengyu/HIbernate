@@ -39,6 +39,8 @@
         <!-- 使用了注解的类,全限定名 -->
         <mapping class="Hibernate.entity.User"/>
 
+        <mapping resource="Hibernate/entity/User.hbm.xml"/>
+
     </session-factory>
 
 </hibernate-configuration>
